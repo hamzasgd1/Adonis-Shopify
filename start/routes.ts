@@ -59,7 +59,7 @@ Route.get('auth', async ({ view, request }) => {
     'read_fulfillments',
   ]
 
-  const yourShopifyApiKey = '9eabdf1f409a18e13cf96a323314f451'
+  const yourShopifyApiKey = ''
   const authUrl = await Auth.buildAuthorizationUrl(
     scopes,
     usersShopifyUrl,
@@ -79,7 +79,7 @@ Route.get('/auth/callback', async ({ auth, request, response, session }: HttpCon
     const message = querystring.stringify(map)
     const providedHmac = Buffer.from(hmac, 'utf-8')
     const generatedHash = Buffer.from(
-      crypto.createHmac('sha256', 'dce00414ebd429c775411f71d8a49464').update(message).digest('hex'),
+      crypto.createHmac('sha256', '').update(message).digest('hex'),
       'utf-8'
     )
     let hashEquals = false
@@ -95,8 +95,8 @@ Route.get('/auth/callback', async ({ auth, request, response, session }: HttpCon
     }
     const accessTokenRequestUrl = 'https://' + shop + '/admin/oauth/access_token'
     const accessTokenPayload = {
-      client_id: '9eabdf1f409a18e13cf96a323314f451',
-      client_secret: 'dce00414ebd429c775411f71d8a49464',
+      client_id: '',
+      client_secret: '',
       code,
     }
     const axios = require('axios')
